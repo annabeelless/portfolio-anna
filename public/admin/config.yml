@@ -14,8 +14,8 @@ backend:
 output:
   omit_empty_optional_fields: true
 
-media_folder: public/img/uploads
-public_folder: /img/uploads
+media_folder: public/img
+public_folder: /img
 
 collections:
   # ---------------- PROJECTS ----------------
