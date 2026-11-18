@@ -22,12 +22,12 @@ collections:
   - name: projects
     label: "Проекты"
     label_singular: "Проект"
-    description: "Карточки проектов на главной и страницы кейсов. Порядок - поле «Порядок»."
+    description: "Карточки проектов на главной и страницы кейсов. Порядок - поле «Порядок». Адрес страницы нового проекта создаётся из названия латиницей."
     folder: src/content/projects
     extension: json
     format: json
     create: true
-    slug: "{{fields.slug}}"
+    slug: "{{slug}}"
     identifier_field: title
     summary: "{{order}} - {{title}} ({{subtitle}})"
     sortable_fields: [order, title]
@@ -35,7 +35,6 @@ collections:
       # --- Main ---
       - { name: title, label: "Название проекта", widget: string }
       - { name: subtitle, label: "Подзаголовок (курсивом под названием)", widget: string }
-      - { name: slug, label: "Адрес страницы (латиницей, например hello)", widget: string, hint: "Станет адресом /work/<slug>.html. После публикации лучше не менять." }
       - { name: order, label: "Порядок (1 = первый)", widget: number, value_type: int }
       - { name: placeholder, label: "Скоро (проект без страницы, помечен [ soon ])", widget: boolean, default: false, required: false }
       - { name: featured, label: "Большая карточка на главной", widget: boolean, default: false, required: false }
@@ -43,11 +42,11 @@ collections:
       - { name: tags, label: "Теги для фильтров на главной", widget: list, required: false, hint: "Например: SMM, Ads, Design, AI, Events, Web" }
 
       # --- Passport ---
-      - { name: client, label: "Клиент", widget: string }
+      - { name: client, label: "Клиент", widget: string, required: false }
       - { name: position, label: "Должность", widget: string, required: false }
       - { name: year, label: "Год / период", widget: string, required: false }
       - { name: industry, label: "Сфера", widget: string }
-      - { name: services, label: "Услуги (в паспорте проекта)", widget: list }
+      - { name: services, label: "Услуги (в паспорте проекта)", widget: list, required: false }
 
       # --- Look ---
       - { name: accent, label: "Акцентный цвет", widget: color, default: "#111111" }
