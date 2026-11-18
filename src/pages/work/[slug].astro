@@ -99,11 +99,13 @@ const blocks = [['feed', 'Feed', p.feed, '4:5'], ['stories', 'Stories', p.storie
   </section>
   )}
 
+  {p.testimonial && (
   <section class="quote">
     <p class="mono muted reveal">[ Testimonial ]</p>
     <blockquote class="reveal">“{p.testimonial.text}”</blockquote>
-    <p class="quote__who reveal"><b>{p.testimonial.name}</b> <span class="muted">({p.testimonial.position})</span></p>
+    <p class="quote__who reveal"><b>{p.testimonial.name}</b>{p.testimonial.position && <span class="muted"> ({p.testimonial.position})</span>}</p>
   </section>
+  )}
 
   <section class="others">
     <div class="others__head"><div><h2 class="h2 reveal">Other projects</h2><p class="mono muted reveal">Keep exploring</p></div><a class="filter filter--link reveal" href={u('index.html#projects')}>All projects →</a></div>

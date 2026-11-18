@@ -1,102 +1,185 @@
+# Admin panel (Sveltia CMS, Decap-compatible config)
+# Login: "Sign in with token" (GitHub fine-grained token for annabeelless/portfolio-anna)
 backend:
   name: github
   repo: annabeelless/portfolio-anna
   branch: main
+  commit_messages:
+    create: "Add {{collection}} {{slug}}"
+    update: "Update {{collection}} {{slug}}"
+    delete: "Delete {{collection}} {{slug}}"
+    uploadMedia: "Upload {{path}}"
+    deleteMedia: "Delete {{path}}"
+
+output:
+  omit_empty_optional_fields: true
+
 media_folder: public/img/uploads
 public_folder: /img/uploads
-locale: en
+
 collections:
+  # ---------------- PROJECTS ----------------
   - name: projects
-    label: Projects
-    label_singular: Project
+    label: "Проекты"
+    label_singular: "Проект"
+    description: "Карточки проектов на главной и страницы кейсов. Порядок - поле «Порядок»."
     folder: src/content/projects
     extension: json
     format: json
     create: true
     slug: "{{fields.slug}}"
     identifier_field: title
+    summary: "{{order}} - {{title}} ({{subtitle}})"
     sortable_fields: [order, title]
     fields:
-      - { name: slug, label: "URL slug (latin, e.g. hello-carsharing)", widget: string }
-      - { name: title, label: Title, widget: string }
-      - { name: subtitle, label: Subtitle, widget: string }
-      - { name: order, label: "Order (1 = first)", widget: number, value_type: int }
-      - { name: featured, label: "Show as big featured case on home", widget: boolean, default: false }
-      - { name: category, label: Category, widget: string, default: "Social media · Design" }
-      - { name: year, label: Year, widget: string, required: false }
-      - { name: industry, label: Industry, widget: string }
-      - { name: client, label: Client, widget: string }
-      - { name: services, label: Services, widget: list }
-      - { name: accent, label: "Accent color (hex)", widget: color, default: "#111111" }
-      - { name: dark, label: "Dark background for feed blocks", widget: boolean, default: true }
-      - { name: cover, label: "Cover image (4:5)", widget: image }
-      - { name: summary, label: "One-line summary", widget: text }
-      - { name: task, label: Task, widget: text }
-      - { name: role, label: "My role", widget: text }
-      - { name: approach, label: Approach, widget: text }
+      # --- Main ---
+      - { name: title, label: "Название проекта", widget: string }
+      - { name: subtitle, label: "Подзаголовок (курсивом под названием)", widget: string }
+      - { name: slug, label: "Адрес страницы (латиницей, например hello)", widget: string, hint: "Станет адресом /work/<slug>.html. После публикации лучше не менять." }
+      - { name: order, label: "Порядок (1 = первый)", widget: number, value_type: int }
+      - { name: placeholder, label: "Скоро (проект без страницы, помечен [ soon ])", widget: boolean, default: false, required: false }
+      - { name: featured, label: "Большая карточка на главной", widget: boolean, default: false, required: false }
+      - { name: category, label: "Категория (мелким сверху)", widget: string, hint: "Разделяйте через дефис, например: Cars - SMM - Videos - Ads" }
+      - { name: tags, label: "Теги для фильтров на главной", widget: list, required: false, hint: "Например: SMM, Ads, Design, AI, Events, Web" }
+
+      # --- Passport ---
+      - { name: client, label: "Клиент", widget: string }
+      - { name: position, label: "Должность", widget: string, required: false }
+      - { name: year, label: "Год / период", widget: string, required: false }
+      - { name: industry, label: "Сфера", widget: string }
+      - { name: services, label: "Услуги (в паспорте проекта)", widget: list }
+
+      # --- Look ---
+      - { name: accent, label: "Акцентный цвет", widget: color, default: "#111111" }
+      - { name: dark, label: "Тёмный фон для блоков ленты", widget: boolean, default: true, required: false }
+      - { name: cover, label: "Обложка карточки", widget: image, required: false }
+      - { name: panelImages, label: "Фото в превью на главной (листаются при наведении)", widget: list, required: false, field: { name: image, label: "Фото", widget: image } }
+      - { name: panelBg, label: "Цвет фона панели на главной", widget: color, required: false }
+      - { name: panelDark, label: "Тёмная панель на главной", widget: boolean, required: false }
+
+      # --- Case head ---
+      - { name: wideImage, label: "Широкое фото-подложка вверху кейса", widget: image, required: false, hint: "Широкое фото примерно 2.4:1, объект справа, слева пусто под текст." }
+      - { name: sideImage, label: "Фото справа от заголовка (если нет подложки)", widget: image, required: false }
+      - { name: heroImage, label: "Фото на весь первый экран (старый вариант)", widget: image, required: false }
+      - { name: heroText, label: "Текст в стеклянной плашке (для фото на весь экран)", widget: text, required: false }
+      - { name: heroMeta, label: "Мелкие подписи в плашке", widget: list, required: false }
+
+      # --- About ---
+      - { name: summary, label: "Главный текст (крупно под заголовком)", widget: text }
+      - { name: task, label: "Задача", widget: text }
+      - { name: role, label: "Моя роль", widget: text }
+      - { name: approach, label: "Подход", widget: text }
       - name: stats
-        label: "Big numbers (optional)"
+        label: "Большие цифры"
         widget: list
         required: false
-        fields: [ { name: value, label: Value, widget: string }, { name: label, label: Label, widget: string } ]
-      - { name: feed, label: "Feed posts (4:5)", widget: list, field: { name: image, label: Image, widget: image } }
-      - { name: stories, label: "Stories (9:16)", widget: list, field: { name: image, label: Image, widget: image } }
-      - { name: ads, label: "Ad creatives", widget: list, field: { name: image, label: Image, widget: image } }
-      - { name: chaptersTitle, label: "\"What I built\" block title (optional)", widget: string, required: false }
+        summary: "{{fields.value}} - {{fields.label}}"
+        fields:
+          - { name: value, label: "Число (например +300%)", widget: string }
+          - { name: label, label: "Подпись", widget: string }
+
+      # --- Scope ---
+      - { name: scopeTitle, label: "Заголовок блока обязанностей", widget: string, required: false }
+      - { name: scopeTop, label: "Показывать блок обязанностей сразу после цифр", widget: boolean, required: false }
+      - { name: scope, label: "Обязанности / объём работ", widget: list, hint: "Формат строки: Название - описание (через пробел-дефис-пробел)" }
+
+      # --- What I built ---
+      - { name: chaptersTitle, label: "Заголовок блока направлений", widget: string, required: false }
       - name: chapters
-        label: "What I built - directions (shown first on the case page)"
+        label: "Направления (блоки с горизонтальной галереей)"
         widget: list
         required: false
         summary: "{{fields.title}}"
         fields:
-          - { name: title, label: Title, widget: string }
-          - { name: text, label: Text, widget: text }
-          - { name: items, label: "Tags / names", widget: list, required: false }
-          - { name: kind, label: "Layout", widget: select, options: [{ label: "Tags + photos", value: "" }, { label: "Big names (partners)", value: names }], required: false }
-          - { name: images, label: Photos, widget: list, required: false, field: { name: image, label: Image, widget: image } }
-      - { name: videosTitle, label: "Videos block title (optional)", widget: string, required: false }
+          - { name: title, label: "Название", widget: string }
+          - { name: text, label: "Текст", widget: text }
+          - { name: items, label: "Метки или названия партнёров", widget: list, required: false }
+          - { name: kind, label: "Вид", widget: select, required: false, options: [{ label: "Метки + фото", value: "" }, { label: "Крупные названия (партнёры)", value: "names" }] }
+          - { name: images, label: "Фото", widget: list, required: false, field: { name: image, label: "Фото", widget: image } }
+
+      # --- Videos ---
+      - { name: videosTitle, label: "Заголовок блока видео", widget: string, required: false }
       - name: videos
-        label: "Videos (MP4, up to ~50 MB each)"
+        label: "Видео (MP4, до ~50 МБ каждое)"
         widget: list
         required: false
         summary: "{{fields.title}}"
         fields:
-          - { name: title, label: Title, widget: string }
-          - { name: src, label: "Video file (MP4)", widget: file, media_library: { config: { multiple: false } } }
-          - { name: poster, label: "Cover image (optional)", widget: image, required: false }
-          - { name: ratio, label: Format, widget: select, options: ["9:16", "16:9"], default: "9:16" }
-      - { name: extrasTitle, label: "Extra block title (optional)", widget: string, required: false }
-      - { name: extrasKind, label: "Extra block layout", widget: select, options: [round, event], required: false }
-      - { name: extras, label: "Extra images", widget: list, required: false, field: { name: image, label: Image, widget: image } }
-      - { name: position, label: "Position", widget: string, required: false }
-      - { name: scopeTitle, label: "Scope heading", widget: string, required: false }
-      - { name: scopeTop, label: "Show scope near the top", widget: boolean, required: false }
-      - { name: scope, label: "Scope of work (Title - description)", widget: list }
-      - { name: results, label: "Results (real data only)", widget: text, required: false }
+          - { name: title, label: "Название", widget: string }
+          - { name: src, label: "Файл видео (MP4)", widget: file }
+          - { name: poster, label: "Обложка (необязательно)", widget: image, required: false }
+          - { name: ratio, label: "Формат", widget: select, options: ["9:16", "16:9"], default: "9:16" }
+
+      # --- Galleries ---
+      - { name: wall, label: "Широкая лента фото (3 фото)", widget: list, required: false, field: { name: image, label: "Фото", widget: image } }
+      - { name: feed, label: "Посты ленты (4:5)", widget: list, required: false, field: { name: image, label: "Фото", widget: image } }
+      - { name: stories, label: "Сторис (9:16)", widget: list, required: false, field: { name: image, label: "Фото", widget: image } }
+      - { name: ads, label: "Рекламные креативы", widget: list, required: false, field: { name: image, label: "Фото", widget: image } }
+      - { name: extrasTitle, label: "Заголовок доп. блока", widget: string, required: false }
+      - { name: extrasKind, label: "Вид доп. блока", widget: select, options: [round, event], required: false }
+      - { name: extras, label: "Доп. фото", widget: list, required: false, field: { name: image, label: "Фото", widget: image } }
+
+      # --- Bottom ---
+      - { name: results, label: "Результаты (только реальные данные)", widget: text, required: false }
       - name: testimonial
-        label: Testimonial
+        label: "Отзыв"
         widget: object
+        required: false
         fields:
-          - { name: text, label: Text, widget: text }
-          - { name: name, label: Name, widget: string }
-          - { name: position, label: Position, widget: string }
+          - { name: text, label: "Текст отзыва", widget: text, required: false }
+          - { name: name, label: "Имя", widget: string, required: false }
+          - { name: position, label: "Должность", widget: string, required: false }
+
+  # ---------------- SITE ----------------
   - name: settings
-    label: Site settings
+    label: "Настройки сайта"
     files:
       - name: site
-        label: "Name, hero, contacts"
+        label: "Имя, главный экран, обо мне, контакты"
         file: src/data/site.json
         format: json
         fields:
-          - { name: name, label: "Name (big wordmark)", widget: string }
-          - { name: role, label: Role, widget: string }
-          - { name: heroLead, label: "Hero line, regular", widget: string }
-          - { name: heroAccent, label: "Hero line, italic", widget: string }
-          - { name: tagline, label: Tagline, widget: text }
-          - { name: location, label: Location, widget: string }
-          - { name: email, label: Email, widget: string }
-          - { name: about, label: About, widget: text }
-          - name: socials
-            label: Socials
+          - { name: name, label: "Название / логотип", widget: string }
+          - { name: disciplines, label: "Строка направлений (через дефис)", widget: string }
+          - { name: tagline, label: "Подзаголовок на главной", widget: text }
+          - { name: email, label: "Email", widget: string }
+          - name: contacts
+            label: "Контакты"
             widget: list
-            fields: [ { name: label, label: Label, widget: string }, { name: url, label: URL, widget: string } ]
+            summary: "{{fields.label}} - {{fields.handle}}"
+            fields:
+              - { name: type, label: "Тип", widget: select, options: [instagram, telegram, email, linkedin, behance, other] }
+              - { name: label, label: "Название", widget: string }
+              - { name: handle, label: "Ник / адрес", widget: string }
+              - { name: url, label: "Ссылка", widget: string }
+          - { name: aboutLead, label: "Обо мне: крупный текст", widget: text }
+          - { name: aboutBody, label: "Обо мне: абзацы", widget: list, field: { name: text, label: "Абзац", widget: text } }
+          - name: experience
+            label: "Опыт"
+            widget: list
+            summary: "{{fields.company}} ({{fields.years}})"
+            fields:
+              - { name: company, label: "Компания", widget: string }
+              - { name: years, label: "Годы", widget: string }
+              - { name: role, label: "Роль", widget: string }
+          - name: clients
+            label: "Клиенты"
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: "Название", widget: string }
+              - { name: logo, label: "Логотип", widget: image, required: false }
+      - name: services
+        label: "Услуги"
+        file: src/data/services.json
+        format: json
+        fields:
+          - { name: intro, label: "Вступление", widget: text }
+          - name: items
+            label: "Услуги"
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: "Название", widget: string }
+              - { name: text, label: "Описание", widget: text }
+              - { name: list, label: "Пункты", widget: list }
