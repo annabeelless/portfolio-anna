@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, services, pad } from '../lib/data.js';
+const n = services.items.length;
+---
+<Base title={`Services - ${site.name}`} page="services">
+  <section class="pagehead">
+    <p class="mono muted" data-load>[ What I do ]</p>
+    <h1 class="pagehead__title" data-load style="--d:.12s">Services</h1>
+    <p class="pagehead__lead" data-load style="--d:.24s">{services.intro}</p>
+  </section>
+  <section class="split">
+    <div class="split__list">
+      {services.items.map((s, i) => (
+        <article class="svcitem" style={`--i:${i}`}>
+          <div class="svcitem__head"><h2>{s.title}</h2><span class="mono muted">{i + 1}/{n}</span></div>
+          <p class="svcitem__text">{s.text}</p>
+          <ul class="svcitem__list mono">{s.list.map((l) => <li>{l}</li>)}</ul>
+        </article>))}
+    </div>
+  </section>
+</Base>

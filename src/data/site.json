@@ -1,0 +1,67 @@
+{
+  "name": "A.B.MARKETING",
+  "disciplines": "creativity - design - smm - strategy - ads - ai",
+  "tagline": "Independent marketing designer based worldwide, building social media, ad creatives and AI visuals for brands that want to grow",
+  "email": "hello@abmarketing.com",
+  "contacts": [
+    {
+      "type": "instagram",
+      "label": "Instagram",
+      "handle": "@annabeelless",
+      "url": "https://instagram.com/"
+    },
+    {
+      "type": "telegram",
+      "label": "Telegram",
+      "handle": "@username",
+      "url": "https://t.me/"
+    },
+    {
+      "type": "email",
+      "label": "Email",
+      "handle": "hello@abmarketing.com",
+      "url": "mailto:hello@abmarketing.com"
+    }
+  ],
+  "aboutLead": "Marketer, SMM and paid social specialist and an all-round designer. I take brands from a style kit to a working feed, stories, ads and video, and make sure every piece has a job to do.",
+  "aboutBody": [
+    "I work at the point where strategy meets visuals: research the audience, build the content plan, design the feed and creatives, shoot short video and launch ads.",
+    "My toolkit covers social media, paid social, design systems for socials, event promo and AI-generated content.",
+    "[Replace this paragraph with your own words in the admin]"
+  ],
+  "experience": [
+    {
+      "company": "Hello carsharing",
+      "years": "20XX-",
+      "role": "Marketer, SMM and ads"
+    },
+    {
+      "company": "Freelance",
+      "years": "20XX-",
+      "role": "Social media designer"
+    },
+    {
+      "company": "[Company]",
+      "years": "20XX-20XX",
+      "role": "[Role]"
+    }
+  ],
+  "clients": [
+    {
+      "name": "Hello carsharing",
+      "logo": ""
+    },
+    {
+      "name": "MOX",
+      "logo": ""
+    },
+    {
+      "name": "openini",
+      "logo": ""
+    },
+    {
+      "name": "Uventy",
+      "logo": ""
+    }
+  ]
+}

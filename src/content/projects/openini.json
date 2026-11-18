@@ -1,0 +1,86 @@
+{
+  "title": "openini",
+  "subtitle": "Premium flooring & furniture",
+  "order": 3,
+  "featured": true,
+  "category": "SMM - Ads - Branding",
+  "year": "",
+  "industry": "Interior - Flooring",
+  "client": "openini",
+  "services": [
+    "Social visual style",
+    "Feed design",
+    "Stories",
+    "Highlight covers",
+    "Ad creatives"
+  ],
+  "accent": "#E8442A",
+  "dark": false,
+  "cover": "/img/openini/feed/openini-feed-04-brand.webp",
+  "summary": "A premium salon of parquet flooring and furniture matched to it.",
+  "task": "Keep the feel of a premium interior brand while working with a bright red logo — and show texture, the thing you can't touch through a screen.",
+  "role": "I designed the brand's social media: style kit, feed, stories, highlight covers and ad creatives.",
+  "approach": "Quiet editorial minimalism: warm oak, boucle and soft daylight, large grotesk headlines with italic serif notes, thin rules and numbering instead of UI elements. The red logo is the only bright accent.",
+  "feed": [
+    "/img/openini/feed/openini-feed-01-faktura.webp",
+    "/img/openini/feed/openini-feed-02-interior.webp",
+    "/img/openini/feed/openini-feed-03-natura.webp",
+    "/img/openini/feed/openini-feed-04-brand.webp",
+    "/img/openini/feed/openini-feed-05-installation.webp",
+    "/img/openini/feed/openini-feed-06-tone.webp"
+  ],
+  "stories": [
+    "/img/openini/stories/openini-story-01-collage.webp",
+    "/img/openini/stories/openini-story-02-passport.webp",
+    "/img/openini/stories/openini-story-03-smoothness.webp",
+    "/img/openini/stories/openini-story-04-details.webp",
+    "/img/openini/stories/openini-story-05-warm-evening.webp",
+    "/img/openini/stories/openini-story-06-split.webp"
+  ],
+  "ads": [
+    "/img/openini/ads/openini-ad-01-wave-chair.webp",
+    "/img/openini/ads/openini-ad-02-new.webp",
+    "/img/openini/ads/openini-ad-03-soft.webp",
+    "/img/openini/ads/openini-ad-04-red-block.webp",
+    "/img/openini/ads/openini-ad-05-barefoot.webp"
+  ],
+  "extrasTitle": "Highlight covers",
+  "extrasKind": "round",
+  "extras": [
+    "/img/openini/highlights/openini-hl-01-floor.webp",
+    "/img/openini/highlights/openini-hl-02-furniture.webp",
+    "/img/openini/highlights/openini-hl-03-interiors.webp",
+    "/img/openini/highlights/openini-hl-04-installation.webp",
+    "/img/openini/highlights/openini-hl-05-reviews.webp"
+  ],
+  "scope": [
+    "Social style kit: logo use, palette, type, elements",
+    "6 feed posts in a checkerboard grid",
+    "6 stories in a calm catalogue style",
+    "5 highlight covers",
+    "5 ad creatives (9:16 and 4:5)"
+  ],
+  "results": "",
+  "testimonial": {
+    "text": "Testimonial text goes here.",
+    "name": "Name Surname",
+    "position": "Position, openini"
+  },
+  "tags": [
+    "SMM",
+    "Ads",
+    "Branding"
+  ],
+  "panelBg": "#D8CFC3",
+  "panelDark": false,
+  "panelImages": [
+    "/img/openini/ads/openini-ad-02-new.webp",
+    "/img/openini/feed/openini-feed-04-brand.webp",
+    "/img/openini/feed/openini-feed-06-tone.webp"
+  ],
+  "wall": [
+    "/img/openini/feed/openini-feed-04-brand.webp",
+    "/img/openini/feed/openini-feed-02-interior.webp",
+    "/img/openini/feed/openini-feed-03-natura.webp"
+  ]
+}

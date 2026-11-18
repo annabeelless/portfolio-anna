@@ -1,0 +1,21 @@
+---
+import { pad } from '../lib/data.js';
+const { p, u } = Astro.props;
+---
+<section class="chp" id="built">
+  <div class="block__head reveal"><div><h2 class="h2">{p.chaptersTitle || 'What I built'}</h2><p class="mono muted">({pad(p.chapters.length)}) directions</p></div></div>
+  {p.chapters.map((c, i) => (
+    <article class={`ch__it ${c.kind === 'names' ? 'ch__it--names' : ''}`}>
+      <div class="ch__top">
+        <span class="mono muted ch__n reveal">({pad(i + 1)})</span>
+        <h3 class="ch__t reveal">{c.title}</h3>
+        <div class="ch__info reveal">
+          <p>{c.text}</p>
+          {c.kind !== 'names' && c.items?.length > 0 && <ul class="ch__tags mono">{c.items.map((x) => <li>{x}</li>)}</ul>}
+        </div>
+      </div>
+      {c.kind === 'names' && <ul class="ch__names">{c.items.map((x, k) => <li class="reveal" style={`--i:${k % 4}`}>{x}</li>)}</ul>}
+      {c.images?.length > 0 && <div class="stories adrow ch__row" data-drag>{c.images.map((src, k) => <figure class="story adrow__item ch__img reveal" style={`--i:${k}`}><img src={u(src)} alt={`${p.title} - ${c.title} ${k + 1}`} loading="eager" decoding="async" draggable="false" data-zoom /></figure>)}</div>}
+    </article>
+  ))}
+</section>

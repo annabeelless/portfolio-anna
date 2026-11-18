@@ -1,0 +1,21 @@
+---
+import { pad } from '../lib/data.js';
+const { p, u } = Astro.props;
+const list = p.videos || [];
+---
+<section class="block vids" id="videos">
+  <div class="block__head reveal"><div><h2 class="h2">{p.videosTitle || 'Videos'}</h2><p class="mono muted">{list.length ? `(${pad(list.length)}) - tap to play` : 'Talking-head, cinematic and mascot cartoons'}</p></div></div>
+  {list.length ? (
+    <div class="stories vids__row" data-drag>
+      {list.map((v, i) => (
+        <figure class={`vid vid--${(v.ratio || '9:16').replace(':', 'x')} reveal`} style={`--i:${i}`} data-video={u(v.src)}>
+          <video src={u(v.src)} poster={v.poster ? u(v.poster) : undefined} muted playsinline loop preload="metadata"></video>
+          <span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          <figcaption class="mono muted">({pad(i + 1)}) {v.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  ) : (
+    <div class="vids__ph"><span class="mono muted">[ Videos are uploading ]</span></div>
+  )}
+</section>

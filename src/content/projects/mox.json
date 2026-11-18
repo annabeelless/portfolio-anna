@@ -1,0 +1,70 @@
+{
+  "title": "MOX",
+  "subtitle": "Creative studio",
+  "order": 2,
+  "featured": true,
+  "category": "SMM - Ads - AI - Branding",
+  "year": "",
+  "industry": "Design & AI studio",
+  "client": "MOX, Warsaw",
+  "services": [
+    "Social visual style",
+    "Feed design",
+    "Interactive stories",
+    "Ad creatives",
+    "3D visuals (AI)",
+    "English copy"
+  ],
+  "accent": "#7FD8CE",
+  "dark": true,
+  "cover": "/img/mox/feed/mox-feed-01-hero.webp",
+  "summary": "A full-cycle creative studio from Warsaw: branding, websites, UX/UI, design support and AI integration.",
+  "task": "Give the studio a social media presence as strong as its own work — one that explains what MOX does without a pitch deck.",
+  "role": "I ran MOX's social media: the visual style, feed posts, stories and ad creatives.",
+  "approach": "Objects only, no people. Matte 3D keycaps and the teal ring from the logo carry every visual on a dark base with brand teal. Familiar interfaces act as scroll-stoppers: Instagram stickers, a DM chat, a search bar, notifications, Figma cursors.",
+  "feed": [
+    "/img/mox/feed/mox-feed-01-hero.webp",
+    "/img/mox/feed/mox-feed-02-ai-integration.webp",
+    "/img/mox/feed/mox-feed-03-who-are-mox.webp",
+    "/img/mox/feed/mox-feed-04-innoprom-case.webp",
+    "/img/mox/feed/mox-feed-05-one-brand.webp",
+    "/img/mox/feed/mox-feed-06-one-system.webp"
+  ],
+  "stories": [
+    "/img/mox/stories/mox-story-01-intro-poll.webp",
+    "/img/mox/stories/mox-story-02-quiz.webp",
+    "/img/mox/stories/mox-story-03-before-after.webp",
+    "/img/mox/stories/mox-story-04-progress.webp",
+    "/img/mox/stories/mox-story-05-dm-chat.webp",
+    "/img/mox/stories/mox-story-06-cta-link.webp"
+  ],
+  "ads": [
+    "/img/mox/ads/mox-ad-01-receipt.webp",
+    "/img/mox/ads/mox-ad-02-search.webp",
+    "/img/mox/ads/mox-ad-03-ai-notifications.webp",
+    "/img/mox/ads/mox-ad-04-multiplayer.webp"
+  ],
+  "extras": [],
+  "extrasTitle": "",
+  "scope": [
+    "Social visual style: palette, type, 3D objects, effects",
+    "6 feed posts incl. a two-part panorama",
+    "6 interactive stories: poll, quiz, slider, progress, DM chat, link",
+    "4 ad creatives (4:5) with Meta Ads copy",
+    "Captions, story and ad texts in English"
+  ],
+  "results": "",
+  "testimonial": {
+    "text": "Testimonial text goes here.",
+    "name": "Name Surname",
+    "position": "Position, MOX"
+  },
+  "tags": [
+    "SMM",
+    "Ads",
+    "AI",
+    "Branding"
+  ],
+  "panelBg": "#0E1C1A",
+  "panelDark": true
+}

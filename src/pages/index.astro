@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import IndexRow from '../components/IndexRow.astro';
+import { site, projects, services, filters, visuals, rel, pad } from '../lib/data.js';
+const u = rel(0);
+const letters = [...site.name];
+---
+<Base title={site.name}>
+  <canvas class="ribbon" data-ribbon aria-hidden="true"></canvas>
+  <section class="hero">
+    <h1 class="hero__mark" aria-label={site.name} data-fit>
+      {letters.map((l, i) => <span class="ch" style={`--i:${i}`} aria-hidden="true">{l}</span>)}
+    </h1>
+    <div class="hero__sub" data-echo aria-label={site.disciplines}>
+      {[0, 1, 2, 3, 4].map((k) => <span class="hero__subline" style={`--k:${k}`} aria-hidden={k ? 'true' : undefined}>{site.disciplines}</span>)}
+    </div>
+    <p class="hero__lead" data-load style="--d:.9s">{site.tagline}</p>
+  </section>
+
+  <section id="projects" class="ix" data-stack>
+    <div class="ix__head">
+      <div><h2 class="h2 reveal">Projects <sup class="mono muted">({pad(projects.length)})</sup></h2><p class="mono muted reveal">Selected work - new cases are coming</p></div>
+      <div class="filters reveal" role="group" aria-label="Filter projects">
+        {filters.map((f, i) => <button class={`filter ${i === 0 ? 'is-on' : ''}`} data-filter={f} type="button">{f}</button>)}
+      </div>
+    </div>
+    <div class="projects__empty" data-empty hidden>
+      <div class="projects__emptybox">
+        <span class="mono muted">[ <span data-empty-cat>Web</span> ]</span>
+        <p class="projects__emptytitle">Projects are <em>uploading</em></p>
+        <span class="loader" aria-hidden="true"><i></i></span>
+        <span class="mono muted">New cases in this category are on their way - check back soon</span>
+      </div>
+    </div>
+    <ul class="ix__list" data-ix>
+      {projects.map((p, i) => <IndexRow p={p} n={i + 1} />)}
+    </ul>
+    <div class="ix__float" aria-hidden="true"><img alt="" /></div>
+  </section>
+
+  <section class="svc">
+    <div class="svc__head"><div><h2 class="h2 reveal">Services</h2><p class="mono muted reveal">From strategy to the last ad set</p></div><a class="filter filter--link reveal" href={u('services.html')}>All services →</a></div>
+    <ul class="svc__list">
+      {services.items.map((s, i) => (
+        <li style={`--i:${i}`}><a href={u('services.html')}><span class="mono muted">({pad(i + 1)})</span><span class="svc__name">{s.title}</span><span class="svc__text">{s.text}</span></a></li>))}
+    </ul>
+  </section>
+</Base>

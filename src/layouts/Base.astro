@@ -1,0 +1,59 @@
+---
+import '@fontsource/inter-tight/latin-400.css';
+import '@fontsource/inter-tight/latin-500.css';
+import '@fontsource/inter-tight/latin-600.css';
+import '@fontsource/inter-tight/latin-700.css';
+import '@fontsource/inter-tight/latin-800.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '@fontsource/fragment-mono/latin-400.css';
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import ToTop from '../components/ToTop.astro';
+import Icon from '../components/Icon.astro';
+import { site, rel } from '../lib/data.js';
+const { title = site.name, depth = 0, page = '' } = Astro.props;
+const u = rel(depth);
+const nav = [['Projects', 'index.html#projects', 'projects'], ['AI content', 'ai-content.html', 'ai'], ['Services', 'services.html', 'services'], ['About', 'about.html', 'about'], ['Contacts', '#contacts', 'contacts']];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={site.tagline} />
+  <script is:inline>
+    (function () {
+      try { history.scrollRestoration = 'manual'; } catch (e) {}
+      var user = false;
+      ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (n) { addEventListener(n, function () { user = true; }, { passive: true }); });
+      function top() { if (location.hash || user) return; window.scrollTo(0, 0); document.documentElement.scrollTop = 0; if (document.body) document.body.scrollTop = 0; }
+      top();
+      document.addEventListener('DOMContentLoaded', top);
+      addEventListener('pageshow', function () { user = false; top(); });
+      addEventListener('load', function () { [0, 80, 250, 600, 1200].forEach(function (t) { setTimeout(top, t); }); });
+      window.__abTop = top; window.__abUser = function () { return user; };
+    })();
+  </script>
+</head>
+<body data-page={page}>
+  <header class="nav" data-load>
+    <a class="nav__logo" href={u('index.html')}>{site.name}</a>
+    <nav class="nav__links">
+      {nav.map(([l, h, k]) => <a href={h.startsWith('#') ? h : u(h)} class={page === k ? 'is-active' : ''}><span data-text={l}>{l}</span></a>)}
+    </nav>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>Menu</button>
+  </header>
+  <div class="menu" id="menu" data-menu aria-hidden="true">
+    <div class="menu__head"><a class="nav__logo" href={u('index.html')}>{site.name}</a><button class="nav__toggle" type="button" data-menu-toggle>Close</button></div>
+    <div class="menu__body">
+      <nav class="menu__links">{nav.map(([l, h], i) => <a href={h.startsWith('#') ? h : u(h)} style={`--i:${i}`} data-menu-link>{l}</a>)}</nav>
+      <ul class="menu__social">{site.contacts.map((c, i) => <li style={`--i:${i + 5}`}><a href={c.url} target={c.type === 'email' ? undefined : '_blank'} rel="noopener" aria-label={c.label}><span class="menu__ico"><Icon name={c.type} /></span><span>{c.label}</span></a></li>)}</ul>
+    </div>
+  </div>
+  <main id="top"><slot /></main>
+  <Footer depth={depth} />
+  <ToTop />
+  <script>import '../scripts/main.js';</script>
+</body>
+</html>

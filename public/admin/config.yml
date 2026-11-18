@@ -1,0 +1,102 @@
+backend:
+  name: github
+  repo: annabeelless/portfolio-anna
+  branch: main
+media_folder: public/img/uploads
+public_folder: /img/uploads
+locale: en
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: src/content/projects
+    extension: json
+    format: json
+    create: true
+    slug: "{{fields.slug}}"
+    identifier_field: title
+    sortable_fields: [order, title]
+    fields:
+      - { name: slug, label: "URL slug (latin, e.g. hello-carsharing)", widget: string }
+      - { name: title, label: Title, widget: string }
+      - { name: subtitle, label: Subtitle, widget: string }
+      - { name: order, label: "Order (1 = first)", widget: number, value_type: int }
+      - { name: featured, label: "Show as big featured case on home", widget: boolean, default: false }
+      - { name: category, label: Category, widget: string, default: "Social media · Design" }
+      - { name: year, label: Year, widget: string, required: false }
+      - { name: industry, label: Industry, widget: string }
+      - { name: client, label: Client, widget: string }
+      - { name: services, label: Services, widget: list }
+      - { name: accent, label: "Accent color (hex)", widget: color, default: "#111111" }
+      - { name: dark, label: "Dark background for feed blocks", widget: boolean, default: true }
+      - { name: cover, label: "Cover image (4:5)", widget: image }
+      - { name: summary, label: "One-line summary", widget: text }
+      - { name: task, label: Task, widget: text }
+      - { name: role, label: "My role", widget: text }
+      - { name: approach, label: Approach, widget: text }
+      - name: stats
+        label: "Big numbers (optional)"
+        widget: list
+        required: false
+        fields: [ { name: value, label: Value, widget: string }, { name: label, label: Label, widget: string } ]
+      - { name: feed, label: "Feed posts (4:5)", widget: list, field: { name: image, label: Image, widget: image } }
+      - { name: stories, label: "Stories (9:16)", widget: list, field: { name: image, label: Image, widget: image } }
+      - { name: ads, label: "Ad creatives", widget: list, field: { name: image, label: Image, widget: image } }
+      - { name: chaptersTitle, label: "\"What I built\" block title (optional)", widget: string, required: false }
+      - name: chapters
+        label: "What I built - directions (shown first on the case page)"
+        widget: list
+        required: false
+        summary: "{{fields.title}}"
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: text, label: Text, widget: text }
+          - { name: items, label: "Tags / names", widget: list, required: false }
+          - { name: kind, label: "Layout", widget: select, options: [{ label: "Tags + photos", value: "" }, { label: "Big names (partners)", value: names }], required: false }
+          - { name: images, label: Photos, widget: list, required: false, field: { name: image, label: Image, widget: image } }
+      - { name: videosTitle, label: "Videos block title (optional)", widget: string, required: false }
+      - name: videos
+        label: "Videos (MP4, up to ~50 MB each)"
+        widget: list
+        required: false
+        summary: "{{fields.title}}"
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: src, label: "Video file (MP4)", widget: file, media_library: { config: { multiple: false } } }
+          - { name: poster, label: "Cover image (optional)", widget: image, required: false }
+          - { name: ratio, label: Format, widget: select, options: ["9:16", "16:9"], default: "9:16" }
+      - { name: extrasTitle, label: "Extra block title (optional)", widget: string, required: false }
+      - { name: extrasKind, label: "Extra block layout", widget: select, options: [round, event], required: false }
+      - { name: extras, label: "Extra images", widget: list, required: false, field: { name: image, label: Image, widget: image } }
+      - { name: position, label: "Position", widget: string, required: false }
+      - { name: scopeTitle, label: "Scope heading", widget: string, required: false }
+      - { name: scopeTop, label: "Show scope near the top", widget: boolean, required: false }
+      - { name: scope, label: "Scope of work (Title - description)", widget: list }
+      - { name: results, label: "Results (real data only)", widget: text, required: false }
+      - name: testimonial
+        label: Testimonial
+        widget: object
+        fields:
+          - { name: text, label: Text, widget: text }
+          - { name: name, label: Name, widget: string }
+          - { name: position, label: Position, widget: string }
+  - name: settings
+    label: Site settings
+    files:
+      - name: site
+        label: "Name, hero, contacts"
+        file: src/data/site.json
+        format: json
+        fields:
+          - { name: name, label: "Name (big wordmark)", widget: string }
+          - { name: role, label: Role, widget: string }
+          - { name: heroLead, label: "Hero line, regular", widget: string }
+          - { name: heroAccent, label: "Hero line, italic", widget: string }
+          - { name: tagline, label: Tagline, widget: text }
+          - { name: location, label: Location, widget: string }
+          - { name: email, label: Email, widget: string }
+          - { name: about, label: About, widget: text }
+          - name: socials
+            label: Socials
+            widget: list
+            fields: [ { name: label, label: Label, widget: string }, { name: url, label: URL, widget: string } ]

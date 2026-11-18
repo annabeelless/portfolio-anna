@@ -1,0 +1,13 @@
+---
+import { rel } from '../lib/data.js';
+const { p, depth = 0 } = Astro.props; const u = rel(depth);
+---
+<a class="card reveal" href={u(`work/${p.slug}.html`)} data-tags={p.tags.join(',')}>
+  <div class="card__frame" style={`--tone:${p.panelBg || '#1a1a19'}`}>
+    {p.cover ? <img src={u(p.cover)} alt={`${p.title} ${p.subtitle}`} loading="lazy" /> :
+      <div class="card__ph"><span class="card__phname">{p.title}</span><span class="mono muted">[ coming soon ]</span></div>}
+  </div>
+  <div class="card__meta mono"><span>{p.category}</span><span>{p.year}</span></div>
+  <h3 class="card__title"><span>{p.title}</span></h3>
+  <p class="card__sub"><span>{p.subtitle}</span></p>
+</a>

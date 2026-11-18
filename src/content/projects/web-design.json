@@ -1,0 +1,36 @@
+{
+  "featured": false,
+  "placeholder": true,
+  "year": "",
+  "client": "",
+  "services": [],
+  "accent": "#f2f0ec",
+  "dark": true,
+  "cover": "",
+  "task": "[Task: to be filled in the admin]",
+  "role": "[Role: to be filled in the admin]",
+  "approach": "[Approach: to be filled in the admin]",
+  "feed": [],
+  "stories": [],
+  "ads": [],
+  "extras": [],
+  "extrasTitle": "",
+  "scope": [
+    "[Scope item]"
+  ],
+  "results": "",
+  "testimonial": {
+    "text": "Testimonial text goes here.",
+    "name": "Name Surname",
+    "position": "Position, Company"
+  },
+  "title": "Web design",
+  "subtitle": "Sites and landing pages",
+  "tags": [
+    "Web"
+  ],
+  "category": "Web",
+  "industry": "Web",
+  "order": 6,
+  "summary": "Web design case is coming soon."
+}

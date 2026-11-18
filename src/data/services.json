@@ -1,0 +1,11 @@
+{
+  "intro": "From the first research to the last ad set - one person who sees the whole picture and keeps every piece of it on brand.",
+  "items": [
+    { "title": "Strategy", "text": "I dig into the brand, the audience and the competitors to find what the content should say and where.", "list": ["Audience research", "Competitor analysis", "Content strategy", "Goals and metrics"] },
+    { "title": "SMM", "text": "I run social media end to end: content plans, feed, stories and captions that sound like the brand.", "list": ["Content plans", "Feed and stories", "Copywriting", "Community"] },
+    { "title": "Design", "text": "I build visual systems for socials and design every piece inside them, from a post to an event poster.", "list": ["Social style kits", "Posts, stories, highlights", "Event promo and tickets", "Presentations"] },
+    { "title": "Ads", "text": "I make ad creatives for different buying motives and run paid social campaigns that are built to be tested.", "list": ["Ad creatives", "Meta Ads", "Creative testing", "Retargeting"] },
+    { "title": "Video", "text": "I write, shoot and star in short-form video, with hooks that keep people watching past the first second.", "list": ["Reels and TikTok", "Scripts and hooks", "Shoots", "Talking head"] },
+    { "title": "AI content", "text": "I use AI to produce visuals and video that would be too slow or too costly to shoot.", "list": ["AI visuals and 3D objects", "AI product shots", "AI video", "Prompt systems"] }
+  ]
+}

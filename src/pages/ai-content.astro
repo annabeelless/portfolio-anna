@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/data.js';
+---
+<Base title={`AI content - ${site.name}`} page="ai">
+  <section class="pagehead">
+    <p class="mono muted" data-load>[ AI content ]</p>
+    <h1 class="pagehead__title" data-load style="--d:.12s">AI <em>content</em></h1>
+    <p class="pagehead__lead" data-load style="--d:.24s">Visuals, 3D objects and video made with AI for brands and campaigns.</p>
+  </section>
+  <section class="empty reveal">
+    <span class="mono muted">[ First AI works are being added ]</span>
+    <p>This page fills itself from the admin: upload a visual or a video, pick the project, and it appears here.</p>
+  </section>
+</Base>

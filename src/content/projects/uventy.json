@@ -1,0 +1,105 @@
+{
+  "title": "Uventy",
+  "subtitle": "Kasta concert tour",
+  "order": 4,
+  "featured": true,
+  "category": "SMM - Events - Ads",
+  "year": "2024–2025",
+  "industry": "Events - Concerts",
+  "client": "Uventy event agency",
+  "services": [
+    "Social visual style",
+    "Tour poster",
+    "Pre-sale feed",
+    "Stories",
+    "Ad creatives",
+    "Tickets & VIP invite"
+  ],
+  "accent": "#D21F26",
+  "dark": true,
+  "cover": "/img/uventy/feed/uventy-feed-01-announce.webp",
+  "summary": "An event agency bringing Russian-speaking artists to audiences in Europe and Azerbaijan. Here: the Kasta tour — Lisbon, Baku, Madrid.",
+  "task": "Sell out concerts in cities where the agency has no regular audience. Every show has one date — there is no second chance.",
+  "role": "I ran the agency's social media from announcement to after-show: visual style, poster, pre-sale feed, stories, ad creatives, tickets and the VIP invitation.",
+  "approach": "A red-and-cream system built on stage photography and condensed type. The feed follows a 9-step pre-sale plan — from the announcement to the thank-you after the show.",
+  "stats": [
+    {
+      "value": "3",
+      "label": "cities"
+    },
+    {
+      "value": "3/3",
+      "label": "sold out"
+    },
+    {
+      "value": "1,200",
+      "label": "guests per show"
+    }
+  ],
+  "feed": [
+    "/img/uventy/feed/uventy-feed-09-thanks.webp",
+    "/img/uventy/feed/uventy-feed-08-today.webp",
+    "/img/uventy/feed/uventy-feed-07-countdown.webp",
+    "/img/uventy/feed/uventy-feed-06-guide.webp",
+    "/img/uventy/feed/uventy-feed-05-songs-live.webp",
+    "/img/uventy/feed/uventy-feed-04-which-track.webp",
+    "/img/uventy/feed/uventy-feed-03-baku-venue.webp",
+    "/img/uventy/feed/uventy-feed-02-since-1995.webp",
+    "/img/uventy/feed/uventy-feed-01-announce.webp"
+  ],
+  "stories": [
+    "/img/uventy/stories/uventy-story-01-teaser.webp",
+    "/img/uventy/stories/uventy-story-02-test.webp",
+    "/img/uventy/stories/uventy-story-03-ticket-guide.webp",
+    "/img/uventy/stories/uventy-story-04-qa.webp",
+    "/img/uventy/stories/uventy-story-05-baku.webp"
+  ],
+  "ads": [
+    "/img/uventy/ads/uventy-ad-01-offer.webp",
+    "/img/uventy/ads/uventy-ad-02-emotion.webp",
+    "/img/uventy/ads/uventy-ad-03-three-cities.webp",
+    "/img/uventy/ads/uventy-ad-04-friends.webp"
+  ],
+  "extrasTitle": "Poster, tickets & invitation",
+  "extrasKind": "event",
+  "extras": [
+    "/img/uventy/event/uventy-poster-tour.webp",
+    "/img/uventy/event/uventy-tickets-print.webp",
+    "/img/uventy/event/uventy-eticket-mockup.webp",
+    "/img/uventy/event/uventy-eticket-detail.webp",
+    "/img/uventy/event/uventy-eticket.webp",
+    "/img/uventy/event/uventy-vip-mockup.webp",
+    "/img/uventy/event/uventy-vip-invite.webp"
+  ],
+  "scope": [
+    "Social visual style: palette, type, elements, duotone rules",
+    "Kasta tour poster",
+    "9-step pre-sale plan and a 3×3 feed for it",
+    "Stories: teaser, quiz, ticket guide, Q&A",
+    "4 ad creatives for different buying motives",
+    "Printed and e-tickets, VIP invitation"
+  ],
+  "results": "Lisbon — LAV Lisboa ao Vivo, 27.10.2024 - Baku — StereoHall, 25.04.2025 - Madrid — Independance Club, 30.11.2025. Sold out at every show.",
+  "testimonial": {
+    "text": "Testimonial text goes here.",
+    "name": "Name Surname",
+    "position": "Position, Uventy"
+  },
+  "tags": [
+    "SMM",
+    "Events",
+    "Ads"
+  ],
+  "panelBg": "#2A0A0B",
+  "panelDark": true,
+  "panelImages": [
+    "/img/uventy/feed/uventy-feed-08-today.webp",
+    "/img/uventy/event/uventy-poster-tour.webp",
+    "/img/uventy/feed/uventy-feed-07-countdown.webp"
+  ],
+  "wall": [
+    "/img/uventy/feed/uventy-feed-01-announce.webp",
+    "/img/uventy/feed/uventy-feed-08-today.webp",
+    "/img/uventy/feed/uventy-feed-07-countdown.webp"
+  ]
+}

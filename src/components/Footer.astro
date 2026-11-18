@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+import { site, rel } from '../lib/data.js';
+const { depth = 0 } = Astro.props; const u = rel(depth);
+---
+<footer class="footer" id="contacts">
+  <div class="xp__head footer__head"><div><h2 class="h2">Contacts</h2><p class="mono muted">Let's work together</p></div></div>
+  <div class="footer__top">
+    <div class="footer__talk reveal">
+      <h2 class="footer__title">Let's make your brand <em>impossible to scroll past</em></h2>
+    </div>
+    <ul class="contacts">
+      {site.contacts.map((c, i) => (
+        <li class="reveal" style={`--i:${i}`}>
+          <a class="contact" href={c.url} target={c.type === 'email' ? undefined : '_blank'} rel="noopener">
+            <span class="contact__icon"><Icon name={c.type} /></span>
+            <span class="contact__text"><span class="mono muted">{c.label}</span><span class="contact__handle">{c.handle}</span></span>
+            <span class="contact__arrow"><Icon name="arrow" /></span>
+          </a>
+        </li>))}
+    </ul>
+  </div>
+  <div class="footer__bottom mono">
+    <span>{site.name} (2026) - all rights reserved</span>
+  </div>
+</footer>

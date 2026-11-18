@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import IndexRow from '../components/IndexRow.astro';
+import { site, services, projects, rel, pad } from '../lib/data.js';
+const u = rel(0);
+const n = services.items.length;
+---
+<Base title={`About - ${site.name}`} page="about">
+  <section class="about">
+    <div class="about__intro">
+      <p class="mono muted" data-load>[ About ]</p>
+      <p class="about__lead" data-load style="--d:.12s">{site.aboutLead}</p>
+      <div class="about__body">{site.aboutBody.map((t, i) => <p data-load style={`--d:${0.3 + i * 0.1}s`}>{t}</p>)}</div>
+    </div>
+    <figure class="about__photo" data-load style="--d:.25s"><div class="about__ph"><span class="mono muted">[ Your photo ]</span></div><figcaption class="mono muted">(A.B) - based worldwide</figcaption></figure>
+  </section>
+
+  <section class="xp ix ix--about">
+    <div class="xp__head"><div><h2 class="h2 reveal">Projects</h2><p class="mono muted reveal">Brands I have worked with - ({pad(projects.length)})</p></div><a class="filter filter--link reveal" href={u('index.html#projects')}>All projects →</a></div>
+    <ul class="ix__list" data-ix>{projects.map((p, i) => <IndexRow p={p} n={i + 1} />)}</ul>
+    <div class="ix__float" aria-hidden="true"><img alt="" /></div>
+  </section>
+
+  <section class="split">
+    <div class="split__list">
+      <div class="xp__head"><div><h2 class="h2 reveal">What I do</h2><p class="mono muted reveal">Services - (06)</p></div></div>
+      {services.items.map((s, i) => (
+        <article class="svcitem" style={`--i:${i}`}>
+          <div class="svcitem__head"><h2>{s.title}</h2><span class="mono muted">{i + 1}/{n}</span></div>
+          <p class="svcitem__text">{s.text}</p>
+          <ul class="svcitem__list mono">{s.list.map((l) => <li>{l}</li>)}</ul>
+        </article>))}
+    </div>
+  </section>
+
+  <section class="clients">
+    <div class="xp__head"><div><h2 class="h2 reveal">Clients</h2><p class="mono muted reveal">Brands I have worked with</p></div></div>
+    <ul class="clients__list">{site.clients.map((c, i) => <li class="reveal" style={`--i:${i}`}><span class="mono muted clients__num">({pad(i + 1)})</span><span class="clients__name">{c.name}</span><span class="clients__logo">{c.logo ? <img src={u(c.logo)} alt={`${c.name} logo`} loading="lazy" /> : <span class="mono muted">[ logo ]</span>}</span></li>)}</ul>
+  </section>
+</Base>

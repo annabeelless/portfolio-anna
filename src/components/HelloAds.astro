@@ -1,0 +1,35 @@
+---
+const { u } = Astro.props;
+const shots = [
+  ['img/hello/hello-google-overview.webp', 'Google Ads - clicks and impressions'],
+  ['img/hello/hello-google-conversions.webp', 'Google Ads - conversions'],
+  ['img/hello/hello-tiktok-overview.webp', 'TikTok Ads - clicks and impressions'],
+];
+---
+<section class="block ax" id="ads-results">
+  <div class="block__head reveal"><div><h2 class="h2">Paid campaigns</h2><p class="mono muted">Meta - Google - TikTok</p></div></div>
+
+  <div class="ax-sub reveal"><h3>Meta Ads <span class="mono muted">(Instagram - Facebook)</span></h3><p>Campaigns for car launches, tariffs, promos, corporate and cargo carsharing. Each launch ran on its own budget - typically around $500, from $100 for quick tests to $2 500 for seasonal promos.</p></div>
+  <div class="ax-kpi"><div class="ax-k reveal" style="--i:0"><span class="mono muted">Campaigns launched</span><b>77</b></div><div class="ax-k reveal" style="--i:1"><span class="mono muted">Impressions</span><b>88.8M</b></div><div class="ax-k reveal" style="--i:2"><span class="mono muted">Link clicks</span><b>765 079</b></div><div class="ax-k reveal" style="--i:3"><span class="mono muted">Average cost per click</span><b>$0.058</b></div><div class="ax-k reveal" style="--i:4"><span class="mono muted">Average CTR</span><b>0.86%</b></div></div>
+  <table class="ax-t"><thead><tr><th>Campaign line</th><th>Launches</th><th>Impressions</th><th>Link clicks</th><th>CTR</th><th>Cost per click</th></tr></thead><tbody><tr><td class="ax-n"><span class="mono muted">(01)</span>Boosted posts</td><td data-l="Launches">25</td><td data-l="Impressions">17.0M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:100.0%"></i></span><span class="ax-num">134 954</span></td><td data-l="CTR">0.79%</td><td class="ax-cpc" data-l="Cost per click">$0.108</td></tr><tr><td class="ax-n"><span class="mono muted">(02)</span>Corporate carsharing</td><td data-l="Launches">8</td><td data-l="Impressions">16.0M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:97.7%"></i></span><span class="ax-num">131 834</span></td><td data-l="CTR">0.82%</td><td class="ax-cpc" data-l="Cost per click">$0.031</td></tr><tr><td class="ax-n"><span class="mono muted">(03)</span>Lada Largus</td><td data-l="Launches">11</td><td data-l="Impressions">23.9M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:97.7%"></i></span><span class="ax-num">131 796</span></td><td data-l="CTR">0.55%</td><td class="ax-cpc" data-l="Cost per click">$0.037</td></tr><tr><td class="ax-n"><span class="mono muted">(04)</span>Promos & discounts</td><td data-l="Launches">9</td><td data-l="Impressions">7.5M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:89.5%"></i></span><span class="ax-num">120 735</span></td><td data-l="CTR">1.62%</td><td class="ax-cpc" data-l="Cost per click">$0.069</td></tr><tr><td class="ax-n"><span class="mono muted">(05)</span>Lada Niva</td><td data-l="Launches">7</td><td data-l="Impressions">9.9M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:68.3%"></i></span><span class="ax-num">92 205</span></td><td data-l="CTR">0.93%</td><td class="ax-cpc" data-l="Cost per click">$0.040</td></tr><tr><td class="ax-n"><span class="mono muted">(06)</span>New cars & tariffs</td><td data-l="Launches">11</td><td data-l="Impressions">5.0M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:51.6%"></i></span><span class="ax-num">69 616</span></td><td data-l="CTR">1.40%</td><td class="ax-cpc" data-l="Cost per click">$0.072</td></tr><tr><td class="ax-n"><span class="mono muted">(07)</span>BMW X7</td><td data-l="Launches">2</td><td data-l="Impressions">5.0M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:20.6%"></i></span><span class="ax-num">27 809</span></td><td data-l="CTR">0.56%</td><td class="ax-cpc" data-l="Cost per click">$0.038</td></tr><tr><td class="ax-n"><span class="mono muted">(08)</span>Website retargeting</td><td data-l="Launches">1</td><td data-l="Impressions">806K</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:17.6%"></i></span><span class="ax-num">23 728</span></td><td data-l="CTR">2.94%</td><td class="ax-cpc" data-l="Cost per click">$0.059</td></tr><tr><td class="ax-n"><span class="mono muted">(09)</span>Cargo carsharing</td><td data-l="Launches">1</td><td data-l="Impressions">2.8M</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:14.0%"></i></span><span class="ax-num">18 892</span></td><td data-l="CTR">0.67%</td><td class="ax-cpc" data-l="Cost per click">$0.028</td></tr><tr><td class="ax-n"><span class="mono muted">(10)</span>Airport</td><td data-l="Launches">2</td><td data-l="Impressions">834K</td>
+<td class="ax-c" data-l="Link clicks"><span class="ax-bar"><i style="width:10.0%"></i></span><span class="ax-num">13 510</span></td><td data-l="CTR">1.62%</td><td class="ax-cpc" data-l="Cost per click">$0.059</td></tr></tbody></table>
+  <div class="ax-best reveal"><span class="mono muted">Best cost per click</span><b>Lada Largus - $0.022</b></div>
+
+  <div class="ax-sub reveal"><h3>Google Ads and TikTok Ads <span class="mono muted">(screenshots from the ad accounts)</span></h3><p>Search and performance campaigns on Google and destination-click campaigns on TikTok, both at around $0.02 - $0.04 per click.</p></div>
+  <div class="ax-mini">
+    <div class="ax-k reveal"><span class="mono muted">Google - conversions</span><b>7 233</b></div>
+    <div class="ax-k reveal" style="--i:1"><span class="mono muted">Google - avg cost per click</span><b>$0.02</b></div>
+    <div class="ax-k reveal" style="--i:2"><span class="mono muted">TikTok - clicks</span><b>50 801</b></div>
+    <div class="ax-k reveal" style="--i:3"><span class="mono muted">TikTok - impressions</span><b>6.4M</b></div>
+  </div>
+  <div class="ax-shots">{shots.map(([src, cap], i) => <figure class={`ax-shot ax-shot--${i} reveal`}><img src={u(src)} alt={cap} loading="lazy" data-zoom /><figcaption class="mono muted">({String(i + 1).padStart(2, '0')}) {cap}</figcaption></figure>)}</div>
+</section>

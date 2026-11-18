@@ -1,0 +1,16 @@
+---
+import { rel, pad } from '../lib/data.js';
+const { p, n, depth = 0 } = Astro.props; const u = rel(depth);
+const soon = p.placeholder || (!p.feed.length && !p.cover);
+const pool = [...(p.panelImages || []), ...p.feed, ...p.ads, p.cover].filter((v) => v).filter((v, i, a) => a.indexOf(v) === i).slice(0, 7).map((s) => u(s));
+const Tag = soon ? 'div' : 'a';
+---
+<li class={`ix__item ${soon ? 'is-soon' : ''}`} data-tags={p.tags.join(',')}>
+  <Tag class="ix__row" href={soon ? undefined : u(`work/${p.slug}.html`)} data-imgs={soon ? undefined : JSON.stringify(pool)}>
+    <span class="ix__n mono">({pad(n)})</span>
+    <span class="ix__name">{p.title}</span>
+    <span class="ix__meta"><span class="ix__sub">{p.subtitle}</span><span class="ix__tags mono">{p.category}</span></span>
+    <span class="ix__thumb" aria-hidden="true">{p.cover ? <img src={u(p.cover)} alt="" loading="lazy" /> : <i>soon</i>}</span>
+    <span class="ix__go mono" aria-hidden="true">{soon ? '[ soon ]' : '↗'}</span>
+  </Tag>
+</li>

@@ -1,0 +1,250 @@
+{
+  "title": "Hello",
+  "subtitle": "Carsharing",
+  "order": 1,
+  "featured": true,
+  "placeholder": false,
+  "tags": [
+    "Cars",
+    "SMM",
+    "Videos",
+    "Ads"
+  ],
+  "category": "Cars - SMM - Videos - Ads",
+  "year": "Ongoing",
+  "industry": "Carsharing",
+  "client": "Hello carsharing, Warsaw",
+  "services": [
+    "Marketing strategy",
+    "Brand and identity",
+    "Graphic and print design",
+    "SMM and short-form video",
+    "Shoot production",
+    "UGC and creators",
+    "Paid social (Meta, TikTok)",
+    "Google Ads",
+    "Collaborations",
+    "Events and PR"
+  ],
+  "accent": "#00F400",
+  "dark": true,
+  "cover": "/img/hello/hello-cover.webp",
+  "summary": "Hello is a carsharing service in Warsaw. As Head of Marketing I ran its whole marketing end to end - brand, design, content, shoots, ads, partnerships and events.",
+  "task": "Make a young carsharing brand known and trusted in the city, grow app installs and first rides, and make every launch - a new car, tariff or promo - impossible to miss.",
+  "role": "Head of Marketing. I led the whole marketing function: strategy and budgets, brand and design, print, SMM and video, shoots, UGC, paid social, Google Ads, collaborations, events and reporting.",
+  "approach": "Every channel in one pair of hands. Each launch got its own content, design, ad campaign and partner activity, so Hello looked and sounded the same in the app, on social media, on the street and on the cars.",
+  "feed": [],
+  "stories": [],
+  "ads": [],
+  "extras": [],
+  "extrasTitle": "",
+  "scope": [
+    "Marketing strategy - yearly and launch plans, channel mix, budgets and KPIs, reporting on results",
+    "Positioning and tone of voice - how Hello speaks in the app, on social media, in ads and on the street",
+    "Brand identity - logo system, company brandbook and app brandbook, templates for every channel",
+    "Graphic and print design - flyers, posters, stickers, outdoor, event branding, merch and the car wrap",
+    "SMM - content strategy and calendar for Instagram and TikTok, daily posting and community management",
+    "Short-form video - ideas, scripts and hooks, shooting and editing Reels and TikToks, talking-head videos with me on camera",
+    "Shoot production - concepts, shot lists, locations, cars, crew and the whole shoot day from call time to wrap",
+    "UGC and creators - finding bloggers and creators, briefs, approvals and reusing their content in ads",
+    "Paid social - Meta and TikTok campaigns for every launch, audiences, creatives, tests and optimisation",
+    "Search and context ads - Google Ads campaigns, keywords and conversion tracking",
+    "Collaborations - finding partners, pitching and negotiating, joint promos with Burger King, McDonald's, Tokiny, Westmotors, banks and 20+ brands",
+    "Media and radio - campaigns on Radio Unistar and Radio Mir",
+    "Events - car shows Avtozhara and Green Cars Day, charity trips, the road rally with Tochka, from idea to the booth on site",
+    "Website and app - website concept, logic and support, app store pages and in-app visuals",
+    "3D mascot - character, poses and animated shorts for the app, website and social media",
+    "Analytics - ad reports, install and ride growth, cost per click and per install",
+    "Contractors - briefing and managing designers, editors, photographers, printers and partner agencies"
+  ],
+  "testimonial": {
+    "text": "Testimonial text goes here.",
+    "name": "Name Surname",
+    "position": "Position, Hello"
+  },
+  "panelBg": "#141414",
+  "panelDark": true,
+  "panelImages": [
+    "/img/hello/wrap-car.webp",
+    "/img/hello/mascot-convertible.webp",
+    "/img/hello/app-store.webp",
+    "/img/hello/event-dsc09305.webp",
+    "/img/hello/mascot-icecream.webp"
+  ],
+  "stats": [
+    {
+      "value": "+300%",
+      "label": "app installs"
+    },
+    {
+      "value": "20+",
+      "label": "collaborations"
+    },
+    {
+      "value": "8",
+      "label": "car shows and events"
+    },
+    {
+      "value": "2",
+      "label": "brand awards"
+    },
+    {
+      "value": "77",
+      "label": "Meta campaigns"
+    }
+  ],
+  "chaptersTitle": "What I built for Hello",
+  "chapters": [
+    {
+      "title": "Positioning and tone of voice",
+      "text": "I developed the brand's whole positioning and tone of voice, and how Hello speaks on social media.",
+      "items": [
+        "Brand positioning",
+        "Tone of voice",
+        "Social media positioning"
+      ],
+      "images": []
+    },
+    {
+      "title": "Brand identity and brandbook",
+      "text": "The visual identity and brandbook of the company, and a separate brandbook for the Hello mobile app.",
+      "items": [
+        "Visual identity",
+        "Company brandbook",
+        "Mobile app brandbook"
+      ],
+      "images": [
+        "/img/hello/app-store.webp",
+        "/img/hello/app-screens.webp"
+      ]
+    },
+    {
+      "title": "Signature car wrap",
+      "text": "A recognisable wrap for the whole fleet - today people across the country know Hello cars by it.",
+      "items": [
+        "Fleet wrap design",
+        "Logo placement",
+        "Signature stripes"
+      ],
+      "images": [
+        "/img/hello/wrap-car.webp",
+        "/img/hello/wrap-logo.webp",
+        "/img/hello/wrap-stripe.webp",
+        "/img/hello/wrap-rear.webp",
+        "/img/hello/wrap-mirror.webp"
+      ]
+    },
+    {
+      "title": "3D mascot",
+      "text": "A potato mascot for the app and the whole website - with its own wardrobe, seasons and animated shorts.",
+      "items": [
+        "Character design",
+        "Seasonal looks",
+        "Animated shorts"
+      ],
+      "images": [
+        "/img/hello/mascot-sheet.webp",
+        "/img/hello/mascot-convertible.webp",
+        "/img/hello/mascot-icecream.webp",
+        "/img/hello/mascot-retro.webp",
+        "/img/hello/mascot-van.webp",
+        "/img/hello/mascot-winter-car.webp",
+        "/img/hello/mascot-xmas.webp",
+        "/img/hello/mascot-winter-turn.webp"
+      ]
+    },
+    {
+      "title": "Website",
+      "text": "The concept and logic of the company website, and its ongoing support.",
+      "items": [
+        "Concept",
+        "Structure and logic",
+        "Support"
+      ],
+      "images": [
+        "/img/hello/site-1.webp",
+        "/img/hello/site-2.webp",
+        "/img/hello/site-3.webp"
+      ]
+    },
+    {
+      "title": "Collaborations and media",
+      "text": "More than 20 partner projects with well-known brands and banks, and ad campaigns on the radio.",
+      "items": [
+        "Burger King",
+        "McDonald's",
+        "Tokiny",
+        "Westmotors",
+        "Sberbank",
+        "BNB-Bank",
+        "Paritetbank",
+        "Radio Unistar",
+        "Radio Mir"
+      ],
+      "images": [],
+      "kind": "names"
+    },
+    {
+      "title": "Events and charity",
+      "text": "8 car shows and events: the company's presence at car shows, charity trips to children's homes with a car exhibition for the kids, and a road rally together with the Tochka car dealership in summer 2026.",
+      "items": [
+        "Avtozhara",
+        "Green Cars Day 2.0",
+        "Green Cars Day 4.0",
+        "Charity trips",
+        "Road rally with Tochka"
+      ],
+      "images": [
+        "/img/hello/event-240a1884.webp",
+        "/img/hello/event-dsc09361.webp",
+        "/img/hello/event-dsc09285.webp",
+        "/img/hello/event-dsc09305.webp",
+        "/img/hello/event-240a1744.webp",
+        "/img/hello/event-dsc09324.webp",
+        "/img/hello/event-dsc09335.webp",
+        "/img/hello/event-dsc09353.webp",
+        "/img/hello/event-dsc09355.webp",
+        "/img/hello/event-dsc09358.webp",
+        "/img/hello/event-dsc09366.webp"
+      ]
+    },
+    {
+      "title": "On camera",
+      "text": "I star in the company's talking-head and cinematic videos, and make animated shorts with the mascot.",
+      "items": [
+        "Talking-head videos",
+        "Cinematic videos",
+        "Mascot cartoons"
+      ],
+      "images": []
+    },
+    {
+      "title": "Awards",
+      "text": "In 2025 Hello won two national awards in the Carsharing category - №1 Choice of the Year and Brand of the Year (consumer preference award). I accepted both on stage for the team.",
+      "items": [
+        "Choice of the Year 2025",
+        "Brand of the Year 2025",
+        "Category - Carsharing"
+      ],
+      "images": [
+        "/img/hello/award-choice-frame.webp",
+        "/img/hello/award-choice-stage.webp",
+        "/img/hello/award-brand-portrait.webp",
+        "/img/hello/award-brand-handover.webp",
+        "/img/hello/award-brand-stage.webp"
+      ]
+    }
+  ],
+  "videos": [],
+  "heroText": "Brand, identity, signature car wrap, 3D mascot, collaborations, events and performance ads - built in-house for a carsharing service in Warsaw.",
+  "heroMeta": [
+    "Branding - SMM - Ads",
+    "Warsaw",
+    "Ongoing"
+  ],
+  "sideImage": "/img/hello/wrap-car.webp",
+  "wideImage": "/img/hello/hello-hero-wide2.webp",
+  "position": "Head of Marketing",
+  "scopeTitle": "Everything I ran as Head of Marketing",
+  "scopeTop": true
+}
