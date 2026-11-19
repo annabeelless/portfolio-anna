@@ -7,13 +7,19 @@ import Videos from '../../components/Videos.astro';
 import { site, projects, rel, pad } from '../../lib/data.js';
 export function getStaticPaths() { return projects.map((p, i) => ({ params: { slug: p.slug }, props: { p, others: [...projects.slice(i + 1), ...projects.slice(0, i)].filter((o) => !o.placeholder && (o.feed.length || o.cover)).slice(0, 3) } })); }
 const { p, others } = Astro.props; const u = rel(1);
+import fs from 'node:fs';
+const wide = (() => {
+  if (!p.wideImage) return null;
+  const v = [1280, 2048, 3200].map((w) => [w, p.wideImage.replace(/(\.\w+)$/, `-${w}$1`)]).filter(([, f]) => fs.existsSync(`public${f}`));
+  return { src: u(v.length ? v[v.length - 1][1] : p.wideImage), srcset: v.length ? v.map(([w, f]) => `${u(f)} ${w}w`).join(', ') : undefined };
+})();
 const steps = [['Task', p.task], ['My role', p.role], ['Approach', p.approach]];
 const blocks = [['feed', 'Feed', p.feed, '4:5'], ['stories', 'Stories', p.stories, '9:16'], ['ads', 'Ad creatives', p.ads, '']].filter((b) => b[2].length);
 ---
 <Base title={`${p.title} ${p.subtitle} - ${site.name}`} depth={1} page="projects">
 <div class="case" style={`--accent:${p.accent}`}>
   <div class={p.wideImage ? 'case__stage' : 'case__nostage'}>
-  {p.wideImage && <div class="case__wbg" aria-hidden="true" data-herobg><img src={u(p.wideImage)} alt="" /></div>}
+  {p.wideImage && <div class="case__wbg" aria-hidden="true" data-herobg><img src={wide.src} srcset={wide.srcset} sizes="(max-width: 860px) 220vw, 100vw" alt="" fetchpriority="high" decoding="async" /></div>}
   <section class={`case__head ${p.heroImage ? 'case__head--hero' : ''}`}>
     {p.heroImage && <div class="case__bg" aria-hidden="true" data-herobg><img src={u(p.heroImage)} alt="" /></div>}
     <div class="case__htop">

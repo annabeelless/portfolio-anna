@@ -799,3 +799,6 @@ html.is-loaded .case__side img{transform:scale(1)}
 .scope__list--full li{padding:16px 0}
 @media (max-width:860px){.scope__list li{grid-template-columns:44px 1fr}.scope__row{grid-template-columns:1fr;gap:6px}}
 .scope__row span{display:block}.scope__row span::first-letter{text-transform:uppercase}
+
+/* home services: fade the ribbon glow into the solid background before the sticky rows */
+.svc{position:relative;background:linear-gradient(180deg,rgba(11,11,11,0) 0,var(--bg) min(22vh,200px))}

@@ -20,9 +20,6 @@ const letters = [...site.name];
   <section id="projects" class="ix" data-stack>
     <div class="ix__head">
       <div><h2 class="h2 reveal">Projects <sup class="mono muted">({pad(projects.length)})</sup></h2><p class="mono muted reveal">Selected work - new cases are coming</p></div>
-      <div class="filters reveal" role="group" aria-label="Filter projects">
-        {filters.map((f, i) => <button class={`filter ${i === 0 ? 'is-on' : ''}`} data-filter={f} type="button">{f}</button>)}
-      </div>
     </div>
     <div class="projects__empty" data-empty hidden>
       <div class="projects__emptybox">
