@@ -825,3 +825,36 @@ html.is-loaded .case__side img{transform:scale(1)}
   .case__wbg{inset:0 0 auto 0;aspect-ratio:auto;height:min(100%,calc(100vw * 1344 / 3168))}
 }
 .case__wbg{-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 40%,rgba(0,0,0,.8) 58%,rgba(0,0,0,.45) 74%,rgba(0,0,0,.15) 88%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 40%,rgba(0,0,0,.8) 58%,rgba(0,0,0,.45) 74%,rgba(0,0,0,.15) 88%,transparent 100%)}
+
+/* ---------- motion polish ---------- */
+/* lightbox: backdrop and controls fade in/out around the zoom */
+.lightbox{opacity:0;transition:opacity .45s var(--ease)}
+.lightbox.is-open{opacity:1}
+.lightbox .lightbox__btn,.lightbox .lightbox__count{opacity:0;transition:opacity .4s var(--ease) .15s,background .3s,color .3s}
+.lightbox.is-open .lightbox__btn,.lightbox.is-open .lightbox__count{opacity:1}
+.lightbox.is-zoom .lightbox__prev,.lightbox.is-zoom .lightbox__next,.lightbox.is-zoom .lightbox__count{opacity:0}
+.lightbox img{transition:transform .45s var(--ease)}
+
+/* softer reveals: rise + unblur */
+.reveal{filter:blur(6px);transition:opacity 1.1s var(--ease) calc(var(--i,0)*.08s),transform 1.1s var(--ease) calc(var(--i,0)*.08s),filter 1.1s var(--ease) calc(var(--i,0)*.08s)}
+.reveal.is-in{filter:none}
+[data-load]{filter:blur(6px);transition:opacity 1.1s var(--ease) var(--d,0s),transform 1.1s var(--ease) var(--d,0s),filter 1.1s var(--ease) var(--d,0s)}
+.is-loaded [data-load]{filter:none}
+/* photos in galleries: open like a curtain, then a slow settle */
+.strip__item.reveal,.feedgrid img.reveal,.ax-shot.reveal{filter:none;clip-path:inset(14% 0 0 0 round 10px);transform:translateY(40px) scale(1.04);transition:opacity 1s var(--ease) calc(var(--i,0)*.07s),transform 1.3s var(--ease) calc(var(--i,0)*.07s),clip-path 1.3s var(--ease) calc(var(--i,0)*.07s)}
+.strip__item.reveal.is-in,.feedgrid img.reveal.is-in,.ax-shot.reveal.is-in{clip-path:inset(0 0 0 0 round 10px);transform:none}
+/* gentle hover on photos */
+.strip__item{overflow:hidden;border-radius:10px}
+.strip__item img{transition:transform .9s var(--ease),filter .6s}
+@media (hover:hover){.strip__item:hover img{transform:scale(1.035)}.ax-shot img{transition:transform .9s var(--ease)}.ax-shot:hover img{transform:translateY(-4px)}}
+/* page to page: soft cross-fade (Chrome, Edge, Safari 18+) */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-out .35s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:vt-in .6s cubic-bezier(.22,.8,.12,1) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-12px)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){
+  .reveal,[data-load],.strip__item.reveal,.feedgrid img.reveal,.ax-shot.reveal{filter:none!important;clip-path:none!important}
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+  .lightbox,.lightbox img{transition:none}
+}

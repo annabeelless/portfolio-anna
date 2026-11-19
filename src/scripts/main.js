@@ -282,16 +282,49 @@ if (lb) {
     if (vid) { vid.pause(); vid.hidden = !isV; }
     img.hidden = isV;
     if (isV) { vid.src = el.dataset.video; vid.currentTime = 0; vid.muted = false; vid.play().catch(() => {}); }
-    else { img.classList.remove('is-in'); void img.offsetWidth; img.src = el.dataset.full || el.currentSrc || el.src; img.classList.add('is-in'); }
+    else {
+      // show the already-loaded preview at once, then swap in the full-size original
+      const thumb = el.currentSrc || el.src, full = el.dataset.full || thumb;
+      if (!opening) { img.classList.remove('is-in'); void img.offsetWidth; img.classList.add('is-in'); }
+      img.src = thumb;
+      if (full !== thumb) { const pre = new Image(); pre.onload = () => { if (set[at] === el) img.src = full; }; pre.src = full; }
+    }
     count.textContent = `${at + 1} / ${set.length}`;
     lb.classList.toggle('is-single', set.length < 2);
   };
+  // zoom in from the photo on the page, zoom back out to it on close
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const EASE = 'cubic-bezier(.22,.8,.12,1)';
+  let opening = false, closing = false;
+  const fromRect = (el) => {
+    const a = el.getBoundingClientRect(), b = img.getBoundingClientRect();
+    if (!a.width || !b.width) return null;
+    const k = a.width / b.width;
+    return `translate(${a.left + a.width / 2 - (b.left + b.width / 2)}px, ${a.top + a.height / 2 - (b.top + b.height / 2)}px) scale(${k})`;
+  };
+  const inView = (el) => { const r = el.getBoundingClientRect(); return r.width && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth; };
   const open = (el) => {
     const scope = el.closest('.block, .case__wall, .ch__it') || document;
     set = [...scope.querySelectorAll('[data-zoom], [data-video]')];
-    lb.hidden = false; lenis?.stop(); show(set.indexOf(el));
+    lb.hidden = false; lenis?.stop();
+    opening = true; show(set.indexOf(el)); opening = false;
+    requestAnimationFrame(() => lb.classList.add('is-open'));
+    if (calm || el.dataset.video) return;
+    const go = () => { const t = fromRect(el); if (t) img.animate([{ transform: t, borderRadius: '10px' }, { transform: 'none' }], { duration: 620, easing: EASE }); };
+    if (img.complete && img.naturalWidth) go(); else img.addEventListener('load', go, { once: true });
   };
-  const close = () => { lb.hidden = true; vid?.pause(); resetZ(); lenis?.start(); };
+  const close = () => {
+    if (closing || lb.hidden) return;
+    vid?.pause(); resetZ();
+    const el = set[at];
+    lb.classList.remove('is-open');
+    const done = () => { closing = false; lb.hidden = true; lenis?.start(); };
+    if (calm || img.hidden || !el || !inView(el)) { setTimeout(done, calm ? 0 : 300); return; }
+    closing = true;
+    const t = fromRect(el);
+    if (!t) { done(); return; }
+    img.animate([{ transform: 'none' }, { transform: t, borderRadius: '10px' }], { duration: 480, easing: EASE, fill: 'forwards' }).finished.then(() => { done(); img.getAnimations().forEach((a) => a.cancel()); });
+  };
   let dragMoved = false;
   document.querySelectorAll('[data-zoom], [data-video]').forEach((el) => el.addEventListener('click', () => { if (!window.__dragMoved) open(el); }));
   lb.querySelector('[data-lb-prev]').addEventListener('click', (e) => { e.stopPropagation(); show(at - 1); });
