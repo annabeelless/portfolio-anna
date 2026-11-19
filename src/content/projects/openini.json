@@ -38,11 +38,11 @@
     "/img/openini/stories/openini-story-06-split.webp"
   ],
   "ads": [
-    "/img/openini/ads/openini-ad-01-wave-chair.webp",
-    "/img/openini/ads/openini-ad-02-new.webp",
-    "/img/openini/ads/openini-ad-03-soft.webp",
-    "/img/openini/ads/openini-ad-04-red-block.webp",
-    "/img/openini/ads/openini-ad-05-barefoot.webp"
+    "/img/openini/creatives/openini-creative-01-wave-chair.webp",
+    "/img/openini/creatives/openini-creative-02-new.webp",
+    "/img/openini/creatives/openini-creative-03-soft.webp",
+    "/img/openini/creatives/openini-creative-04-red-block.webp",
+    "/img/openini/creatives/openini-creative-05-barefoot.webp"
   ],
   "extrasTitle": "Highlight covers",
   "extrasKind": "round",
@@ -74,7 +74,7 @@
   "panelBg": "#D8CFC3",
   "panelDark": false,
   "panelImages": [
-    "/img/openini/ads/openini-ad-02-new.webp",
+    "/img/openini/creatives/openini-creative-02-new.webp",
     "/img/openini/feed/openini-feed-04-brand.webp",
     "/img/openini/feed/openini-feed-06-tone.webp"
   ],

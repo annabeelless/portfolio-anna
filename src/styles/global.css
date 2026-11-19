@@ -440,9 +440,9 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
 @media (max-width:860px){.panel__name h2{font-size:46px}}
 
 /* ad creatives: a swipe row like stories, each creative at its own size */
-.adrow{align-items:flex-start}
-.adrow__item{flex:0 0 clamp(260px,26vw,400px)}
-.adrow__item img{aspect-ratio:auto;height:auto;object-fit:contain;border-radius:6px;cursor:zoom-in}
+.strip{align-items:flex-start}
+.strip__item{flex:0 0 clamp(260px,26vw,400px)}
+.strip__item img{aspect-ratio:auto;height:auto;object-fit:contain;border-radius:6px;cursor:zoom-in}
 
 /* lightbox gallery */
 .lightbox{cursor:default;touch-action:pan-y}
@@ -469,7 +469,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
   .case__wallrow img{flex:0 0 80vw;width:80vw;scroll-snap-align:center;border-radius:6px;box-shadow:none;cursor:zoom-in}
   .passport{padding-top:40px}
   /* ads row on phone */
-  .adrow__item{flex-basis:78vw}
+  .strip__item{flex-basis:78vw}
   .lightbox{padding:0}
   .lightbox img{max-width:100vw;max-height:78vh;border-radius:0}
   .lightbox__prev,.lightbox__next{top:auto;bottom:max(14px,env(safe-area-inset-bottom,0px));transform:none}
