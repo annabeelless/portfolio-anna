@@ -359,7 +359,18 @@ if (lb) {
   });
   lb.addEventListener('wheel', (e) => { if (lb.hidden) return; e.preventDefault(); img.style.transition = 'transform .15s'; zoomAt(e.clientX, e.clientY, z * (e.deltaY < 0 ? 1.15 : 1 / 1.15)); }, { passive: false });
   vid?.addEventListener('click', (e) => e.stopPropagation());
-  lb.addEventListener('click', () => { if (dragged) { dragged = false; return; } if (z > 1) resetZ(); else close(); });
+  let tapT = 0, dblAt = 0;
+  lb.addEventListener('click', (e) => {
+    if (dragged) { dragged = false; return; }
+    if (matchMedia('(hover: none)').matches) {
+      // on phones wait a moment: a second tap means zoom, not close
+      if (e.target === img) return;
+      clearTimeout(tapT); if (z > 1) return;
+      tapT = setTimeout(() => { if (z <= 1 && Date.now() - dblAt > 450) close(); }, 340);
+      return;
+    }
+    if (z > 1) resetZ(); else close();
+  });
   addEventListener('keydown', (e) => {
     if (lb.hidden) return;
     if (e.key === 'Escape') (z > 1 ? resetZ() : close());
@@ -381,13 +392,21 @@ if (lb) {
   }, { passive: false });
   lb.addEventListener('touchend', (e) => {
     if (pinch && e.touches.length < 2) { pinch = 0; return; }
-    if (z > 1 || moved) return;
     const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    const tap = !moved && Math.abs(dx) < 12 && Math.abs(dy) < 12;
+    const now = Date.now();
+    // double tap: zoom in where you tapped, double tap again: back to normal size
+    if (tap && !img.hidden && now - lastTap < 320) {
+      lastTap = 0; dblAt = now;
+      img.style.transition = 'transform .4s cubic-bezier(.22,.8,.12,1)';
+      if (z > 1) { z = 1; ox = 0; oy = 0; applyZ(); }
+      else zoomAt(e.changedTouches[0].clientX, e.changedTouches[0].clientY, Math.min(2.5, zmax()));
+      return;
+    }
+    if (tap) lastTap = now;
+    if (z > 1 || moved) return;
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { show(at + (dx < 0 ? 1 : -1)); return; }
     if (dy > 90) { close(); return; }
-    const now = Date.now();
-    if (!img.hidden && now - lastTap < 300 && Math.abs(dx) < 10) { img.style.transition = 'transform .35s'; zoomAt(e.changedTouches[0].clientX, e.changedTouches[0].clientY, Math.min(2.5, zmax())); }
-    lastTap = now;
   }, { passive: true });
 }
 
