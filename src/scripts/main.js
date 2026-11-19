@@ -282,7 +282,7 @@ if (lb) {
     if (vid) { vid.pause(); vid.hidden = !isV; }
     img.hidden = isV;
     if (isV) { vid.src = el.dataset.video; vid.currentTime = 0; vid.muted = false; vid.play().catch(() => {}); }
-    else { img.classList.remove('is-in'); void img.offsetWidth; img.src = el.currentSrc || el.src; img.classList.add('is-in'); }
+    else { img.classList.remove('is-in'); void img.offsetWidth; img.src = el.dataset.full || el.currentSrc || el.src; img.classList.add('is-in'); }
     count.textContent = `${at + 1} / ${set.length}`;
     lb.classList.toggle('is-single', set.length < 2);
   };

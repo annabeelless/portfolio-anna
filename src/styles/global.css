@@ -802,3 +802,9 @@ html.is-loaded .case__side img{transform:scale(1)}
 
 /* home services: fade the ribbon glow into the solid background before the sticky rows */
 .svc{position:relative;background:linear-gradient(180deg,rgba(11,11,11,0) 0,var(--bg) min(22vh,200px))}
+
+/* gallery rows: size each frame from the photo's real proportions (stable in every browser, works with lazy loading) */
+.ch__img[style*="aspect-ratio"]{width:auto!important}
+.ch__img[style*="aspect-ratio"] img{width:100%!important;height:100%!important}
+/* wide hero: appear as soon as the photo is ready, quicker */
+.case__wbg img{animation-duration:1.1s}

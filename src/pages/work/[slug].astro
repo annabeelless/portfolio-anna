@@ -5,6 +5,7 @@ import HelloAds from '../../components/HelloAds.astro';
 import Chapters from '../../components/Chapters.astro';
 import Videos from '../../components/Videos.astro';
 import { site, projects, rel, pad } from '../../lib/data.js';
+import { img } from '../../lib/img.js';
 export function getStaticPaths() { return projects.map((p, i) => ({ params: { slug: p.slug }, props: { p, others: [...projects.slice(i + 1), ...projects.slice(0, i)].filter((o) => !o.placeholder && (o.feed.length || o.cover)).slice(0, 3) } })); }
 const { p, others } = Astro.props; const u = rel(1);
 import fs from 'node:fs';
@@ -55,7 +56,7 @@ const blocks = [['feed', 'Feed', p.feed, '4:5'], ['stories', 'Stories', p.storie
   {p.chapters && p.chapters.length > 0 && <Chapters p={p} u={u} />}
 
   {(p.feed.length || p.wall) ? (
-    <section class="case__wall" data-load style="--d:.45s" data-parallax><div class="case__wallrow">{(p.wall || p.feed.slice(0, 3)).map((src) => <img src={u(src)} alt="" data-zoom />)}</div></section>
+    <section class="case__wall" data-load style="--d:.45s" data-parallax><div class="case__wallrow">{(p.wall || p.feed.slice(0, 3)).map((src) => <img src={img(src, u).src} data-full={u(src)} alt="" data-zoom />)}</div></section>
   ) : p.chapters?.length ? null : (
     <section class="case__wall case__wall--ph" data-load style="--d:.45s"><span class="mono muted">[ Videos, feed and creatives are coming soon ]</span></section>
   )}
@@ -85,15 +86,15 @@ const blocks = [['feed', 'Feed', p.feed, '4:5'], ['stories', 'Stories', p.storie
     <section class="block" id={id}>
       <div class="block__head reveal"><h2 class="h2">{h}</h2><p class="mono muted">[ {list.length}{ratio ? ` - ${ratio}` : ''} ]</p></div>
       {id === 'feed' && <div class="feedgrid">{list.map((src, i) => <img class="reveal" style={`--i:${i % 3}`} src={u(src)} alt={`${p.title} feed post`} loading="lazy" data-zoom />)}</div>}
-      {id === 'stories' && <div class="stories" data-drag>{list.map((src, i) => <figure class="story reveal" style={`--i:${i}`}><img src={u(src)} alt={`${p.title} story ${i + 1}`} loading="eager" decoding="async" draggable="false" data-zoom /><figcaption class="mono muted">({pad(i + 1)})</figcaption></figure>)}</div>}
-      {id === 'ads' && <div class="stories adrow" data-drag>{list.map((src, i) => <figure class="story adrow__item reveal" style={`--i:${i}`}><img src={u(src)} alt={`${p.title} ad creative ${i + 1}`} loading="eager" decoding="async" draggable="false" data-zoom /><figcaption class="mono muted">({pad(i + 1)})</figcaption></figure>)}</div>}
+      {id === 'stories' && <div class="stories" data-drag>{list.map((src, i) => <figure class="story reveal" style={`--i:${i}`}><img src={img(src, u).src} data-full={u(src)} width={img(src, u).w} height={img(src, u).h} alt={`${p.title} story ${i + 1}`} loading={i < 4 ? 'eager' : 'lazy'} decoding="async" draggable="false" data-zoom /><figcaption class="mono muted">({pad(i + 1)})</figcaption></figure>)}</div>}
+      {id === 'ads' && <div class="stories adrow" data-drag>{list.map((src, i) => <figure class="story adrow__item reveal" style={`--i:${i}`}><img src={img(src, u).src} data-full={u(src)} width={img(src, u).w} height={img(src, u).h} alt={`${p.title} ad creative ${i + 1}`} loading={i < 4 ? 'eager' : 'lazy'} decoding="async" draggable="false" data-zoom /><figcaption class="mono muted">({pad(i + 1)})</figcaption></figure>)}</div>}
     </section>))}
 
   {p.extras && p.extras.length > 0 && (
     <section class="block" id="extras">
       <div class="block__head reveal"><h2 class="h2">{p.extrasTitle}</h2><p class="mono muted">[ {p.extras.length} ]</p></div>
       {p.extrasKind === 'event'
-        ? <div class="stories adrow" data-drag>{p.extras.map((src, i) => <figure class="story adrow__item reveal" style={`--i:${i}`}><img src={u(src)} alt={`${p.title} ${p.extrasTitle} ${i + 1}`} loading="eager" decoding="async" draggable="false" data-zoom /><figcaption class="mono muted">({pad(i + 1)})</figcaption></figure>)}</div>
+        ? <div class="stories adrow" data-drag>{p.extras.map((src, i) => <figure class="story adrow__item reveal" style={`--i:${i}`}><img src={img(src, u).src} data-full={u(src)} width={img(src, u).w} height={img(src, u).h} alt={`${p.title} ${p.extrasTitle} ${i + 1}`} loading={i < 4 ? 'eager' : 'lazy'} decoding="async" draggable="false" data-zoom /><figcaption class="mono muted">({pad(i + 1)})</figcaption></figure>)}</div>
         : <div class={`extras extras--${p.extrasKind}`}>{p.extras.map((src) => <img class="reveal" src={u(src)} alt="" loading="lazy" data-zoom />)}</div>}
     </section>)}
 

@@ -1,5 +1,6 @@
 ---
 import { pad } from '../lib/data.js';
+import { img } from '../lib/img.js';
 const { p, u } = Astro.props;
 ---
 <section class="chp" id="built">
@@ -15,7 +16,7 @@ const { p, u } = Astro.props;
         </div>
       </div>
       {c.kind === 'names' && <ul class="ch__names">{c.items.map((x, k) => <li class="reveal" style={`--i:${k % 4}`}>{x}</li>)}</ul>}
-      {c.images?.length > 0 && <div class="stories adrow ch__row" data-drag>{c.images.map((src, k) => <figure class="story adrow__item ch__img reveal" style={`--i:${k}`}><img src={u(src)} alt={`${p.title} - ${c.title} ${k + 1}`} loading="eager" decoding="async" draggable="false" data-zoom /></figure>)}</div>}
+      {c.images?.length > 0 && <div class="stories adrow ch__row" data-drag>{c.images.map((src, k) => { const m = img(src, u); return <figure class="story adrow__item ch__img reveal" style={`--i:${k};${m.ratio ? `aspect-ratio:${m.ratio}` : ''}`}><img src={m.src} data-full={m.full} width={m.w} height={m.h} alt={`${p.title} - ${c.title} ${k + 1}`} loading={k < 3 ? 'eager' : 'lazy'} decoding="async" draggable="false" data-zoom /></figure>; })}</div>}
     </article>
   ))}
 </section>
