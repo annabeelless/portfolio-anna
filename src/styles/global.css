@@ -858,3 +858,9 @@ html.is-loaded .case__side img{transform:scale(1)}
   ::view-transition-old(root),::view-transition-new(root){animation:none}
   .lightbox,.lightbox img{transition:none}
 }
+/* zoomed photo: hand cursor to drag it around */
+@media (hover:hover){
+  .lightbox.is-zoom img{cursor:grab}
+  .lightbox.is-zoom.is-grabbing img,.lightbox.is-grabbing{cursor:grabbing}
+}
+.lightbox.is-grabbing img{transition:none!important}

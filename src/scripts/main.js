@@ -331,19 +331,35 @@ if (lb) {
   lb.querySelector('[data-lb-next]').addEventListener('click', (e) => { e.stopPropagation(); show(at + 1); });
   lb.querySelector('[data-lb-close]').addEventListener('click', (e) => { e.stopPropagation(); close(); });
   // desktop: click toggles 2.5x zoom at the cursor, moving the mouse pans
+  // when zoomed in: grab the photo with the hand and drag it around
+  let grab = null, dragged = false;
+  img.addEventListener('dragstart', (e) => e.preventDefault());
+  img.addEventListener('mousedown', (e) => {
+    if (z <= 1 || e.button !== 0) return;
+    e.preventDefault(); dragged = false;
+    grab = { x: e.clientX, y: e.clientY, ox, oy };
+    img.style.transition = 'none'; lb.classList.add('is-grabbing');
+  });
+  addEventListener('mousemove', (e) => {
+    if (!grab) return;
+    const dx = e.clientX - grab.x, dy = e.clientY - grab.y;
+    if (Math.abs(dx) + Math.abs(dy) > 4) dragged = true;
+    ox = grab.ox + dx; oy = grab.oy + dy; clampPan(); applyZ();
+  });
+  addEventListener('mouseup', () => {
+    if (!grab) return;
+    grab = null; lb.classList.remove('is-grabbing');
+    img.style.transition = 'transform .45s cubic-bezier(.2,.8,.2,1)';
+  });
   img.addEventListener('click', (e) => {
     e.stopPropagation();
     if (matchMedia('(hover: none)').matches) return;
+    if (dragged) { dragged = false; return; }
     if (z > 1) resetZ(); else { img.style.transition = 'transform .45s cubic-bezier(.2,.8,.2,1)'; zoomAt(e.clientX, e.clientY, Math.min(2.5, zmax())); }
-  });
-  lb.addEventListener('mousemove', (e) => {
-    if (z <= 1) return;
-    img.style.transition = 'transform .12s linear';
-    ox = (innerWidth / 2 - e.clientX) * (z - 1); oy = (innerHeight / 2 - e.clientY) * (z - 1); clampPan(); applyZ();
   });
   lb.addEventListener('wheel', (e) => { if (lb.hidden) return; e.preventDefault(); img.style.transition = 'transform .15s'; zoomAt(e.clientX, e.clientY, z * (e.deltaY < 0 ? 1.15 : 1 / 1.15)); }, { passive: false });
   vid?.addEventListener('click', (e) => e.stopPropagation());
-  lb.addEventListener('click', () => { if (z > 1) resetZ(); else close(); });
+  lb.addEventListener('click', () => { if (dragged) { dragged = false; return; } if (z > 1) resetZ(); else close(); });
   addEventListener('keydown', (e) => {
     if (lb.hidden) return;
     if (e.key === 'Escape') (z > 1 ? resetZ() : close());
